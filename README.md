@@ -1,63 +1,40 @@
-# 📏 Ultrasonic Distance Detector – Proximity Warning System
+# 📏 Ultrasonic Distance Detector – Arduino + HC-SR04
 
-This project implements a real-time distance measuring and obstacle alert system using the **HC-SR04 ultrasonic sensor** and **Arduino UNO**. Visual (LEDs) and auditory (buzzer) indicators provide feedback based on how close an object is.
+An Arduino-based obstacle detection system using an HC-SR04 ultrasonic sensor. The device measures distance in real time and provides LED + buzzer alerts based on proximity — ideal for robotics and indoor navigation.
 
 ---
 
-## 🛠 Components Used
+## 🔧 Components
 
-- Arduino UNO board  
+- Arduino UNO  
 - HC-SR04 Ultrasonic Sensor  
 - Red, Yellow, Green LEDs  
 - Buzzer  
-- Breadboard and jumper wires  
-- 9V Battery or USB power
+- Breadboard, Resistors, Jumper Wires  
+- Power Source (USB or 9V)
 
 ---
 
-## 💡 Working Principle
+## ⚙️ Working Principle
 
-The **HC-SR04 sensor** sends out an ultrasonic pulse and measures the time it takes to bounce back from a nearby object. The Arduino calculates the distance using:
+The HC-SR04 emits ultrasonic pulses and measures the time they take to return. The Arduino calculates the distance and triggers alerts:
 
-Distance = (Time × Speed of Sound) / 2
-
-yaml
-Copy
-Edit
-
-Based on the measured distance:
-- 🟥 **Red LED** + Fast buzzer beep for close objects
-- 🟨 **Yellow LED** + Slow beep for medium range
-- 🟩 **Green LED** + No buzzer for safe distance
-
----
-
-## ✅ Features
-
-- Accurate measurement of distance using ultrasonic reflection  
-- Buzzer and LED indicators for real-time feedback  
-- Useful in robotics, parking sensors, obstacle avoidance  
-- Simple design and easy implementation on Arduino
-
----
-
-## 📐 Observations from Testing
-
-- Distance range tested: **5 cm to 30 cm**
-- Results were consistent with an error margin of ±2 cm
-- Sensor performed well in indoor environments
-
----
-
-## 🔧 Sample Arduino Code Snippet
+| Distance        | Indicator           |
+|----------------|---------------------|
+| < 10 cm         | Red LED + fast beep |
+| 10–20 cm        | Yellow LED + slow beep |
+| > 20 cm         | Green LED only      |
 
 ```cpp
-digitalWrite(trigPin, LOW);
-delayMicroseconds(2);
-digitalWrite(trigPin, HIGH);
-delayMicroseconds(10);
-digitalWrite(trigPin, LOW);
-
 duration = pulseIn(echoPin, HIGH);
 distance = duration * 0.034 / 2;
-A practical project to demonstrate ultrasonic sensing, Arduino programming, and simple embedded control logic. Ideal for students and beginners in IoT/robotics.
+✅ Features
+Real-time distance sensing (5–30 cm range)
+
+Buzzer + LED alert system based on object proximity
+
+Compact design for robotics and smart devices
+
+Tested with ±2 cm accuracy in indoor conditions
+
+Built as a practical IoT and embedded systems project using Arduino.
